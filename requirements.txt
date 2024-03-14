@@ -1,0 +1,7 @@
+hydra-core
+tiktoken
+datasets
+wandb
+mteb
+pre-commit
+prettytable

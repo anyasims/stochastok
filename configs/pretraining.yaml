@@ -1,0 +1,75 @@
+model:
+  core_model:
+    num_layers: 8
+    ffn:
+      ffn_type: swiglu
+      ffn_dim: 1320
+      normalization: rms_norm
+      bias: false
+    attn:
+      attn_type: generic
+      num_heads: 16
+      normalization: rms_norm
+      group_size: 4
+      bias: false
+      is_causal: true
+  lm_head:
+    normalization: rms_norm
+    bias: false
+  hidden_dim: 512
+  context_window: 512
+  vocab_size: 50257
+  embedding_weight_tying: true
+  positional_encoding_type: rope
+  checkpoint_name: null
+trainer:
+  dropout_scheduler:
+    dropout: 0.1
+  training:
+    batch_size: 60
+    gradient_accumulation_steps: 8 # this is split over the number of gpus
+    max_iters: 30000
+    lr_decay_iters: 30000
+    warmup_iters: 5000
+    eval_interval: 200
+    log_interval: 10
+    eval_iters: 500
+    checkpoint_interval: 1000000000.0
+    run_profiler: false
+  optimizer:
+    lr: 0.0006
+    min_lr: 6.0e-05
+    weight_decay: 0.1
+    beta1: 0.9
+    beta2: 0.95
+    grad_clip: 1.0
+    decay_lr: true
+  dataset:
+    name: openwebtext-tokenized
+    # name: openwebtext-tokenized-stochastok0.1
+    # name: multi_digit_addition_base
+    # name: multi_digit_addition_stochastok
+    # name: multi_digit_addition_character
+    is_instruction: false
+  eval:
+    - evaluator: "mcq"
+      num_samples: 1000
+      benchmarks:
+        - "winograd"
+        - "hellaswag"
+        - "arc"
+        - "mmlu"
+        - "blimp"
+    # - evaluator: "math_generation"
+    #   num_samples: 100
+general:
+  logging:
+    run_name_prefix: pretraining
+    wandb_log: true
+    wandb_project: stochastok
+  paths:
+    output_dir: outputs
+    data_dir: data
+    checkpoint_dir: checkpoints
+  seed: 0
+  device: cuda  
