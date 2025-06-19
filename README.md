@@ -1,15 +1,35 @@
-<div align="center" >
-   
-# StochasTok:  Improving Fine-Grained Subword Understanding in LLMs
-   
-[StochasTok Code](stochastok_processor.py) | [Dataset Preprocessing](dataset_preprocessing) | [Configs](configs)
+<div align="center">
+
+# StochasTok: Improving Fine-Grained Subword Understanding in LLMs
+
+[Anya Sims](https://anyasims.github.io/), [Thom Foster](https://thom.fyi/), [Klara Kaleb](https://scholar.google.com.vn/citations?user=11qgBWAAAAAJ&hl=id), [Tuan-Duy H. Nguyen](https://duynht.github.io/), [Joseph Lee](https://jleechung.github.io/), [Jakob N. Foerster](https://x.com/j_foerst), [Yee Whye Teh](https://scholar.google.com/citations?user=y-nUzMwAAAAJ&hl=en), [Cong Lu](https://www.conglu.co.uk/)
+
+[![Paper](https://img.shields.io/badge/paper-A42C25?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/pdf/2503.20783)
+[![Github](https://img.shields.io/badge/Github-568BDC?style=for-the-badge&logo=github)](https://github.com/anyasims/stochastok)
+[![Twitter](https://img.shields.io/badge/Twitter-000000?style=for-the-badge&logo=x)](https://x.com/cong_ml/status/1932369418534760554)
+
+<div align="center" style="font-family: Arial, sans-serif;">
+  <p>
+     Code links: 
+    <a href="stochastok_processor.py" style="text-decoration: none; font-weight: bold;">🌱 StochasTok</a> •
+    <a href="dataset_preprocessing" style="text-decoration: none; font-weight: bold;">🛠️ Dataset Preprocessing</a> •
+    <a href="configs" style="text-decoration: none; font-weight: bold;">⚙️ Configs</a>
+  </p>
+  <p>
+     README links:
+    <a href="#experiments" style="text-decoration: none; font-weight: bold;">💻 Experiments </a> •
+    <a href="#citation" style="text-decoration: none; font-weight: bold;">🔥 TL;DR</a> •
+    <a href="#citation" style="text-decoration: none; font-weight: bold;">🌼 Citation</a>
+  </p>
+</div>
+
 </div>
 
 <p align="center">
-  <img src="./assets/stochastok.png" width=70%/>
+  <img src="./assets/stochastok.png" width=70% style="border-radius: 100px;" />
 </p>
 
-## Experiments
+# Experiments
 
  Instructions for running the following experiments can be found below:
 1. [Pretraining with and without StochasTok](###pretraining)
@@ -93,8 +113,65 @@ python train.py --config-name pretraining \
         trainer.dataset.name=multi_digit_addition_base \
         'trainer.eval=[{evaluator:"math_generation",num_samples:100}]'
 ```
+
+#
 Use `trainer.dataset.name=multi_digit_addition_base` for standard tokenization,
 `trainer.dataset.name=multi_digit_addition_stochastok` for StochasTok tokenization,
 or `trainer.dataset.name=multi_digit_addition_character` for character-level tokenization.
 
+# TL;DR
+
+<div align="center">
+
+**Instead of standard tokenization... use stochastic tokenization!**
+
+<img src="assets/fig2.png" width="60%" />
+
+&nbsp;
+
+**There is no compromise to original performance.**
+
+<img src="assets/fig3.png" width="60%" />
+
+&nbsp;
+
+**It dramatically improves downstream performance on language game tasks**
+
+<img src="assets/fig1.png" width="60%" />
+
+&nbsp;
+
+**StochasTok-trained models grok multi-digit addition**
+
+<img src="assets/fig8.png" width="60%" />
+
+&nbsp;
+
+**And it visibly alters LLMs' internal representations**
+
+<img src="assets/fig12.png" width="60%" /></div>
+
+&nbsp;
+
+***For more results please see our [paper](https://github.com/anyasims/stochastok-preview/blob/main/stochastok-preview.pdf)!***
+
+- StochasTok can be applied without pretraining from scratch,
+- Is robust to hyperparameter choice,
+- Has OOD generalization properties,
+- Scales to larger models,
+- and more...
+
+# Citation
+
+```
+@misc{sims2025stochastokimprovingfinegrainedsubword,
+      title={StochasTok: Improving Fine-Grained Subword Understanding in LLMs}, 
+      author={Anya Sims and Thom Foster and Klara Kaleb and Tuan-Duy H. Nguyen and Joseph Lee and Jakob N. Foerster and Yee Whye Teh and Cong Lu},
+      year={2025},
+      eprint={2506.01687},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2506.01687}, 
+}
+```
 
