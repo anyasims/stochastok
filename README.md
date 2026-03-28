@@ -4,7 +4,7 @@
 
 [Anya Sims](https://anyasims.github.io/), [Thom Foster](https://thom.fyi/), [Klara Kaleb](https://scholar.google.com.vn/citations?user=11qgBWAAAAAJ&hl=id), [Tuan-Duy H. Nguyen](https://duynht.github.io/), [Joseph Lee](https://jleechung.github.io/), [Jakob N. Foerster](https://x.com/j_foerst), [Yee Whye Teh](https://scholar.google.com/citations?user=y-nUzMwAAAAJ&hl=en), [Cong Lu](https://www.conglu.co.uk/)
 
-[![Paper](https://img.shields.io/badge/paper-A42C25?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/pdf/2503.20783)
+[![Paper](https://img.shields.io/badge/paper-A42C25?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2506.01687)
 [![Github](https://img.shields.io/badge/Github-568BDC?style=for-the-badge&logo=github)](https://github.com/anyasims/stochastok)
 [![Twitter](https://img.shields.io/badge/Twitter-000000?style=for-the-badge&logo=x)](https://x.com/cong_ml/status/1932369418534760554)
 
